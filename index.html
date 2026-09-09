@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>สหกรณ์โรงเรียน | เข้าสู่ระบบ</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+      body {
+    min-height: 100vh;
+    font-family: Arial, "Tahoma", sans-serif;
+
+    /* รูปพื้นหลัง */
+    background-image: url("images/background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+    position: relative;
+}
+
+        /* วงกลมตกแต่งพื้นหลัง */
+        body::before {
+            content: "";
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: rgba(255,255,255,0.18);
+            border-radius: 50%;
+            top: -150px;
+            left: -100px;
+        }
+
+        body::after {
+            content: "";
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            bottom: -150px;
+            right: -100px;
+        }
+
+        /* กล่องหลัก */
+        .login-container {
+            width: 420px;
+            max-width: 90%;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* โลโก้ */
+        .logo img {
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto 15px;
+        }
+
+        /* หัวข้อ */
+        h1 {
+            color: #164b78;
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .welcome {
+            color: #245d80;
+            font-size: 17px;
+            margin-bottom: 25px;
+        }
+
+        /* กล่อง Login */
+        .login-box {
+            background: rgba(255,255,255,0.92);
+            padding: 30px;
+            border-radius: 25px;
+
+            box-shadow:
+                0 15px 40px rgba(0,0,0,0.15);
+
+            backdrop-filter: blur(10px);
+        }
+
+        /* ช่องกรอก */
+        .input-group {
+            text-align: left;
+            margin-bottom: 18px;
+        }
+
+        .input-group label {
+            display: block;
+            color: #24506e;
+            font-size: 15px;
+            font-weight: bold;
+            margin-bottom: 7px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 15px 16px;
+
+            border: 2px solid #dce7ef;
+            border-radius: 15px;
+
+            font-size: 16px;
+            outline: none;
+
+            transition: 0.2s;
+        }
+
+        .input-group input:focus {
+            border-color: #4da7ed;
+            box-shadow: 0 0 0 4px rgba(77,167,237,0.15);
+        }
+
+        /* ปุ่ม Login */
+        .login-button {
+            width: 100%;
+            border: none;
+
+            padding: 15px;
+
+            border-radius: 15px;
+
+            background: linear-gradient(
+                135deg,
+                #4da7ed,
+                #318fe0
+            );
+
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+
+            box-shadow: 0 8px 18px rgba(49,143,224,0.25);
+        }
+
+        .login-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(49,143,224,0.35);
+        }
+
+        .login-button:active {
+            transform: translateY(0);
+        }
+
+        /* ข้อความด้านล่าง */
+        .footer {
+            margin-top: 20px;
+            color: #55758a;
+            font-size: 13px;
+        }
+
+        /* ข้อความด้านข้าง */
+        .message {
+            position: fixed;
+            right: 7%;
+            top: 45%;
+
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+
+            transform: rotate(-5deg);
+
+            text-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* มือถือ */
+        @media (max-width: 700px) {
+
+            .message {
+                display: none;
+            }
+
+            .login-container {
+                width: 380px;
+            }
+
+            h1 {
+                font-size: 27px;
+            }
+
+            .logo img {
+                width: 75px;
+                height: 75px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <!-- โลโก้ -->
+        <div class="logo">
+            <img src="images/logo.png" alt="โลโก้สหกรณ์โรงเรียน">
+        </div>
+
+        <!-- หัวข้อ -->
+        <h1>สหกรณ์โรงเรียน</h1>
+
+        <p class="welcome">
+            ยินดีต้อนรับ เข้าสู่ระบบสหกรณ์โรงเรียน
+        </p>
+
+        <!-- Login -->
+        <div class="login-box">
+
+            <form action="shop.html">
+
+                <div class="input-group">
+                    <label>เลขประจำตัว</label>
+
+                    <input
+                        type="text"
+                        placeholder="กรอกเลขประจำตัว"
+                        required
+                    >
+                </div>
+
+
+                <div class="input-group">
+                    <label>วันเกิด</label>
+
+                    <input
+                        type="text"
+                        placeholder="เช่น 15/08/2553"
+                        required
+                    >
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="login-button"
+                >
+                    เข้าสู่ระบบ →
+                </button>
+
+            </form>
+
+            <p class="footer">
+                🔒 ระบบสำหรับสมาชิกสหกรณ์โรงเรียน
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ข้อความตกแต่ง -->
+    <div class="message">
+        ร่วมกันสร้างอนาคตที่ดีกว่า<br>
+        ไปด้วยกัน 😊
+    </div>
+
+</body>
+</html>

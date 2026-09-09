@@ -665,7 +665,7 @@
                 🏠 หน้าหลัก
             </a>
 
-            <a href="#" class="cart-menu">
+            <a href="cart.html" class="cart-menu">
                 🛒 ตะกร้า
 
                 <span
@@ -1306,8 +1306,126 @@
     ========================= -->
 
     <script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-        let cartCount = 0;
+function addToCart(name, price) {
+
+    const existingProduct = cart.find(
+        item => item.name === name
+    );
+
+    if (existingProduct) {
+
+        existingProduct.quantity++;
+
+    } else {
+
+        cart.push({
+            name: name,
+            price: price,
+            quantity: 1
+        });
+
+    }
+
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+
+    updateCartCount();
+
+    alert("เพิ่ม " + name + " ลงตะกร้าแล้ว 🛒");
+}
+
+
+function updateCartCount() {
+
+    const count = cart.reduce(
+        (total, item) => total + item.quantity,
+        0
+    );
+
+    document.getElementById("cart-count")
+        .textContent = count;
+}
+
+
+function searchProduct() {
+
+    const searchText =
+        document.getElementById("search")
+        .value
+        .toLowerCase();
+
+    document.querySelectorAll(".product-card")
+        .forEach(card => {
+
+            const name =
+                card.dataset.name.toLowerCase();
+
+            if (name.includes(searchText)) {
+
+                card.style.display = "";
+
+            } else {
+
+                card.style.display = "none";
+
+            }
+
+        });
+}
+
+
+function filterProduct(category, button) {
+
+    document.querySelectorAll(".filter-btn")
+        .forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+    button.classList.add("active");
+
+    document.querySelectorAll(".product-card")
+        .forEach(card => {
+
+            if (
+                category === "all" ||
+                card.dataset.category === category
+            ) {
+
+                card.style.display = "";
+
+            } else {
+
+                card.style.display = "none";
+
+            }
+
+        });
+}
+
+
+function toggleFavorite(button) {
+
+    if (button.textContent === "♡") {
+
+        button.textContent = "♥";
+
+    } else {
+
+        button.textContent = "♡";
+
+    }
+
+}
+
+
+/* แสดงจำนวนสินค้าในตะกร้าทันทีที่เปิดหน้า */
+updateCartCount();
+
+</script>
 
 
         /* เพิ่มสินค้า */
